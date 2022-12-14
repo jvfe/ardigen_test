@@ -180,3 +180,4 @@ cython_debug/
 poetry.toml
 
 **/Ardigen_FastQ_results/*
+**/Ardigen_TSV_results/*
