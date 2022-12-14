@@ -22,8 +22,9 @@ Sample output:
 46368
 75025
 """
-
 from math import sqrt
+
+from ardigen.utils import split_numbers
 
 
 def get_nth_fib(n: int) -> int:
@@ -40,7 +41,9 @@ def get_nth_fib(n: int) -> int:
     return round(nth_fib)
 
 
-def nth_to_mth_fib(n: int, m: int) -> str:
+def nth_to_mth_fib(numbers: str) -> str:
+    n, m = split_numbers(numbers)
+
     if (1 <= n and n < m and m <= 250) == False:
         raise ValueError(
             "N must be greater or equal to 1 and greater than M. "
