@@ -1,14 +1,5 @@
-.PHONY: clean clean-test clean-pyc clean-build docs help
+.PHONY: clean clean-processing clean-test clean-pyc clean-build help
 .DEFAULT_GOAL := help
-
-define BROWSER_PYSCRIPT
-import os, webbrowser, sys
-
-from urllib.request import pathname2url
-
-webbrowser.open("file://" + pathname2url(os.path.abspath(sys.argv[1])))
-endef
-export BROWSER_PYSCRIPT
 
 define PRINT_HELP_PYSCRIPT
 import re, sys
@@ -24,7 +15,10 @@ export PRINT_HELP_PYSCRIPT
 help:
 	@python -c "$$PRINT_HELP_PYSCRIPT" < $(MAKEFILE_LIST)
 
-clean: clean-build clean-pyc clean-test ## remove all build, test, coverage and Python artifacts
+clean: clean-build clean-pyc clean-test clean-processing ## remove all build, test, coverage and Python artifacts
+
+clean-processing: # remove files from running the project
+	rm -fr Ardigen*results
 
 clean-build: ## remove build artifacts
 	rm -fr build/
