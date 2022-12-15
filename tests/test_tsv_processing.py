@@ -6,7 +6,7 @@ from pandas.testing import assert_frame_equal
 from pytest import mark
 
 from ardigen import process_tsv
-from ardigen.tsv_processing import filter_alignment
+from ardigen.tsv_processing import filter_alignment, tabulate_lengths
 
 
 def test_filter_alignment(sample_alignment):
@@ -20,6 +20,18 @@ def test_filter_alignment(sample_alignment):
 
     assert_frame_equal(df.loc[:, ["qseqid", "length"]], expected_lines)
 
+
+def test_tabulate_lengths(sample_alignment):
+    df = filter_alignment(sample_alignment)
+    tabulated = tabulate_lengths(df)
+    expected_lines = DataFrame(
+        {
+            "alignment_lengths": [52, 92],
+            "abundance": [1, 2],
+        }
+    )
+
+    assert_frame_equal(tabulated, expected_lines)
 
 @mark.parametrize(
     "input_file, output_file",
