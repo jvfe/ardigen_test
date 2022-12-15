@@ -1,3 +1,8 @@
+"""
+Load a FASTQ file. Generate a plot showing a mean quality and standard deviation on each
+position of a read and save it to a PDF file. Save the data to a TSV file (the output file’s
+header is given in the example).
+"""
 import gzip
 from io import StringIO, TextIOWrapper
 from pathlib import Path

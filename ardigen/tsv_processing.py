@@ -1,3 +1,10 @@
+"""
+Load a TSV file. For a column containing an alignment length plot a histogram showing a
+frequency of values in this column. If there is more than one alignment for a particular query,
+choose a better one. Justify your choice in a short comment within the code. Save the plot to
+a PDF file. Save the CSV file with histogram data (the output file’s header is given in the
+example).
+"""
 from functools import reduce
 from pathlib import Path
 
